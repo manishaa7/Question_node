@@ -1,0 +1,34 @@
+<!-- client-side code -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Client</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('connect', () => {
+            console.log('Connected to server.');
+        });
+        socket.on('newMessage', function (message) {
+            console.log(message);
+        });
+        socket.emit('createMessage', {
+            to: 'divya',
+            text: 'hello how are you '
+        });
+
+        socket.on('disconnect', () => {
+            console.log('Disconnected from server.');
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>Client</h1>
+</body>
+
+</html>
